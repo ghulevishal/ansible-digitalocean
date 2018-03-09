@@ -6,7 +6,6 @@
 
   tasks:
 
-
   - name: ensure ssh key exists
     user: >
       name={{ ansible_user_id }}
