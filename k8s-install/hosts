@@ -1,0 +1,5 @@
+[digitalocean]
+localhost ansible_connection=local
+[nodes]
+128.199.240.211
+128.199.241.249

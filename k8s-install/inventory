@@ -1,0 +1,9 @@
+[master]
+128.199.240.211
+
+[node]
+128.199.241.249
+
+[kube-cluster:children]
+master
+node
