@@ -6,13 +6,20 @@
 
   tasks:
 
-
   - name: ensure ssh key exists
     user: >
       name={{ ansible_user_id }}
       generate_ssh_key=yes
       ssh_key_file=.ssh/vishal
 
+  - name: ensure key exists at DigitalOcean
+    digital_ocean: >
+      state=present
+      command=ssh
+      name=my_ssh_key
+      ssh_pub_key={{ lookup('file', '~/.ssh/vishal.pub') }}
+      api_token={{ do_token }}
+    register: my_ssh_key
 
   - name: Delete master
     digital_ocean: >
@@ -41,7 +48,7 @@
       api_token={{ do_token }}
     register: n1
 
-  - name: Delete key exists at DigitalOcean
+  - name: ensure key exists at DigitalOcean
     digital_ocean: >
       state=absent
       command=ssh
@@ -49,4 +56,3 @@
       ssh_pub_key={{ lookup('file', '~/.ssh/vishal.pub') }}
       api_token={{ do_token }}
     register: my_ssh_key
-
