@@ -2,7 +2,7 @@
 - hosts: digitalocean
 
   vars:
-    do_token: 760554437f0d7b2af9262563d6458dfd7d4c7f93d912fb3ce487d1d3ee4d54fc
+    do_token: $DO_API_TOKEN
 
   tasks:
 
