@@ -161,3 +161,43 @@ NAME      STATUS    ROLES     AGE       VERSION
 m1        Ready     master    5m        v1.9.3
 n1        Ready     <none>    3m        v1.9.3 
 ```
+
+## Delete Cluster and Nodes and SSH key at the Digital Ocean.
+
+- Get into the `ansible-digitalocean/do-cluster/` directory.
+
+-  Edit `delete.yaml` and update the `$DO_API_TOKEN` with your Digital Ocean API Token.
+
+- Execute following Ansible palybook
+```
+$ ansible-playbook delete.yaml 
+
+[DEPRECATION WARNING]: [defaults]hostfile option, The key is misleading as it 
+can also be a list of hosts, a directory or a list of paths . This feature will
+ be removed in version 2.8. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+
+PLAY [digitalocean] ************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [ensure ssh key exists] ***************************************************
+ok: [localhost]
+
+TASK [ensure key exists at DigitalOcean] ***************************************
+ok: [localhost]
+
+TASK [Delete master] ***********************************************************
+changed: [localhost]
+
+TASK [Delete worker] ***********************************************************
+changed: [localhost]
+
+TASK [ensure key exists at DigitalOcean] ***************************************
+changed: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=6    changed=3    unreachable=0    failed=0   
+
+```
